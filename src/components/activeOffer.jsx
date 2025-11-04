@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function activeOffer() {
   return (
-    <button></button>
+    <button>Aktiva offerter</button>
   )
 }
 
