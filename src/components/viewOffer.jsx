@@ -23,4 +23,5 @@ function ViewOffer() {
         </div>
     );
 }
+
 export default ViewOffer;

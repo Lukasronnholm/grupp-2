@@ -1,9 +1,10 @@
 import ViewOffer from "../components/viewOffer"
-function Receiver() {
+
+function Receiver({ offers, markAsRead }) {
   return (
     <div>
       <h1>Receiver</h1>
-      <ViewOffer />
+      <ViewOffer offers={offers} markAsRead={markAsRead} />
     </div>
   )
 }

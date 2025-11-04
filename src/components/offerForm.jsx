@@ -1,46 +1,49 @@
-import React from 'react';
 import { useState } from 'react';
- 
-function OfferForm() {
+
+function OfferForm({ addOffer }) {
   const[formData, setFormData] = useState({
   foretag: "",
   tjanst: "",
   timmar: "",
   pris: ""
 });
- 
+
 function handleChange(event) {
   const { name, value } = event.target;
- 
+
   setFormData((prevData) => ({
-    ...prevData,        
-    [name]: value,      
+    ...prevData,
+    [name]: value,
   }));
- 
+
 }
- 
+
+
 function handleSubmit(event){
   event.preventDefault();
-   const newOffer = { 
-    id: Date.now(),
+   const newOffer = {
+    id: new Date(),
     ...formData,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    isNew: true,
   };
-  localStorage.setItem('createdOffer', JSON.stringify(newOffer));
+  addOffer(newOffer);
+  if (OfferForm.onSubmit) OfferForm.onSubmit(newOffer);
   setFormData({
     foretag: "",
     tjanst: "",
     timmar: "",
     pris: ""
   });
+ 
 }
-  return (
-    <form>
+  return (<>
+    <form >
       <label>
         Företag:
         <input type="text" name="foretag" value={formData.foretag} onChange={handleChange}/>
       </label>
-      <label>   
+      <label>
         Tjänst:
         <input type="text" name="tjanst" value={formData.tjanst} onChange={handleChange}/>
       </label>
@@ -52,10 +55,10 @@ function handleSubmit(event){
         Pris:
         <input type="text" name="pris" value={formData.pris} onChange={handleChange}/>
       </label>
-      <button type="submit">Förhandsgranskning</button>
       <button type="submit" onClick={handleSubmit}>Skicka Offert</button>
     </form>
+    <button type="submit">Förhandsgranskning</button>
+    </>
   );
 }
 export default OfferForm;
- 
