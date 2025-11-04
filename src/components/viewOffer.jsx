@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
-function ViewOffer() {
-    const [offer, setOffer] = useState(null);
-    useEffect(() => {
-        const storedOffer = localStorage.getItem('createdOffer');
-        if (storedOffer) {
-            setOffer(JSON.parse(storedOffer));
-        }
-    }, []);
+function ViewOffer({ offer }) {
+
+
     return (
         <div>
             {offer ? (
@@ -23,4 +18,5 @@ function ViewOffer() {
         </div>
     );
 }
+
 export default ViewOffer;

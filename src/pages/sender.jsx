@@ -1,13 +1,12 @@
 import OfferForm from "../components/offerForm";
 
-function Receiver() {
-
+function Sender({ addOffer }) {
   return (
     <div>
-        <h1>Receiver</h1>
-        <OfferForm />
+        <h1>Sender</h1>
+        <OfferForm addOffer={addOffer} />
     </div>
   )
 }
 
-export default Receiver;
+export default Sender;

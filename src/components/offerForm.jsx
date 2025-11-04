@@ -1,7 +1,6 @@
-import React from 'react';
 import { useState } from 'react';
 
-function OfferForm() {
+function OfferForm({ addOffer }) {
   const[formData, setFormData] = useState({
   foretag: "",
   tjanst: "",
@@ -19,24 +18,27 @@ function handleChange(event) {
 
 }
 
+
 function handleSubmit(event){
   event.preventDefault();
    const newOffer = {
-    id: Date.now(),
+    id: new Date(),
     ...formData,
     createdAt: new Date().toISOString(),
-    isNew: true
+    isNew: true,
   };
-  if (onSubmit) onSubmit(newOffer);
+  addOffer(newOffer);
+  if (OfferForm.onSubmit) OfferForm.onSubmit(newOffer);
   setFormData({
     foretag: "",
     tjanst: "",
     timmar: "",
     pris: ""
   });
+ 
 }
   return (<>
-    <form onSubmit={handleSubmit}>
+    <form >
       <label>
         Företag:
         <input type="text" name="foretag" value={formData.foretag} onChange={handleChange}/>
@@ -53,7 +55,7 @@ function handleSubmit(event){
         Pris:
         <input type="text" name="pris" value={formData.pris} onChange={handleChange}/>
       </label>
-      <button type="submit">Skicka Offert</button>
+      <button type="submit" onClick={handleSubmit}>Skicka Offert</button>
     </form>
     <button type="submit">Förhandsgranskning</button>
     </>
