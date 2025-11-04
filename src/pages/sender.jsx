@@ -1,5 +1,7 @@
 import OfferForm from "../components/offerForm";
 
+
+
 function Receiver() {
   return (
     <div>
