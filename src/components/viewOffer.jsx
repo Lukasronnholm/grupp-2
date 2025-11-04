@@ -4,7 +4,7 @@ function ViewOffer() {
     useEffect(() => {
         const storedOffer = localStorage.getItem('createdOffer');
         if (storedOffer) {
-            setOffer(JSON.parse(storedOffer));
+            setOhffer(JSON.parse(storedOffer));
         }
     }, []);
     return (
