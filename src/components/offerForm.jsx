@@ -21,7 +21,18 @@ function handleChange(event) {
  
 function handleSubmit(event){
   event.preventDefault();
- 
+   const newOffer = { 
+    id: Date.now(),
+    ...formData,
+    createdAt: new Date().toISOString()
+  };
+  localStorage.setItem('createdOffer', JSON.stringify(newOffer));
+  setFormData({
+    foretag: "",
+    tjanst: "",
+    timmar: "",
+    pris: ""
+  });
 }
   return (
     <form>
