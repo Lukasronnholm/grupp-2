@@ -15,7 +15,7 @@ function ViewOffer() {
                     <p><strong>Tjänst:</strong> {offer.tjanst}</p>
                     <p><strong>Timmar:</strong> {offer.timmar}</p>
                     <p><strong>Pris:</strong> {offer.pris}</p>
-                    <p>Skapad den: {new Date(offer.createdAt).toLocaleString()}</p>
+                    <p><strong>Skapad den:</strong> {new Date(offer.createdAt).toLocaleDateString()}</p>
                 </div>
             ) : (
                 <p>Ingen offert tillgänglig.</p>
