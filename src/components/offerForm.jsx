@@ -1,10 +1,6 @@
-import SendButton from './sendButton';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-function OfferForm() {
-  const navigate = useNavigate()
-
+function OfferForm({ addOffer }) {
   const[formData, setFormData] = useState({
   foretag: "",
   tjanst: "",
@@ -22,8 +18,27 @@ function handleChange(event) {
 
 }
 
-  return (
-    <form>
+
+function handleSubmit(event){
+  event.preventDefault();
+   const newOffer = {
+    id: new Date(),
+    ...formData,
+    createdAt: new Date().toISOString(),
+    isNew: true,
+  };
+  addOffer(newOffer);
+  if (OfferForm.onSubmit) OfferForm.onSubmit(newOffer);
+  setFormData({
+    foretag: "",
+    tjanst: "",
+    timmar: "",
+    pris: ""
+  });
+ 
+}
+  return (<>
+    <form >
       <label>
         Företag:
         <input type="text" name="foretag" value={formData.foretag} onChange={handleChange}/>
@@ -45,6 +60,8 @@ function handleChange(event) {
       }}>Förhandsgranskning</button>
       <SendButton></SendButton>
     </form>
+    <button type="submit">Förhandsgranskning</button>
+    </>
   );
 }
 export default OfferForm;
