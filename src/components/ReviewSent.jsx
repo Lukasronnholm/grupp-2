@@ -1,3 +1,4 @@
+import { CiCircleCheck } from "react-icons/ci";
 
 export function ReviewSent() {
     return (
@@ -5,6 +6,8 @@ export function ReviewSent() {
         <div>
             <h2>Offert skickad!</h2>
             <h3>Datum: {new Date().toString()}</h3>
+            <CiCircleCheck />
+
         </div>
         </>
     )

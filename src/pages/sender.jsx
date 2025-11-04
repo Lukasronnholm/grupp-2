@@ -6,7 +6,7 @@ function Receiver() {
   return (
     <div>
       <h1>Sender</h1>
-      <OfferForm addOffer={addOffer} />
+      <OfferForm />
     </div>
   );
 }

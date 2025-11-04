@@ -1,6 +1,7 @@
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 function OfferForm({ addOffer }) {
+  const navigate= useNavigate()
   const[formData, setFormData] = useState({
   foretag: "",
   tjanst: "",
@@ -35,7 +36,7 @@ function handleSubmit(event){
     timmar: "",
     pris: ""
   });
- 
+
 }
   return (<>
     <form >
@@ -60,7 +61,7 @@ function handleSubmit(event){
       }}>Förhandsgranskning</button>
       <SendButton></SendButton>
     </form>
-    <button type="submit">Förhandsgranskning</button>
+    <button type="submit" onClick={handleSubmit}>Förhandsgranskning</button>
     </>
   );
 }

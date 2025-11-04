@@ -1,5 +1,5 @@
 import React from "react";
-
+import SendButton from "./sendButton";
 function ReviewForm({ formData }) {
   if (!formData) {
     return (
@@ -34,6 +34,7 @@ function ReviewForm({ formData }) {
           <p className="font-semibold">Pris:</p>
           <p className="whitespace-pre-line">{formData.pris}</p>
         </div>
+        <SendButton></SendButton>
       </div>
     </div>
   );
