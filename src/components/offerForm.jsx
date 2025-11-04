@@ -55,7 +55,10 @@ function handleSubmit(event){
         Pris:
         <input type="text" name="pris" value={formData.pris} onChange={handleChange}/>
       </label>
-      <button type="submit" onClick={handleSubmit}>Skicka Offert</button>
+      <button type="submit" onClick={()=>{
+          navigate("/ReviewSent")
+      }}>Förhandsgranskning</button>
+      <SendButton></SendButton>
     </form>
     <button type="submit">Förhandsgranskning</button>
     </>
