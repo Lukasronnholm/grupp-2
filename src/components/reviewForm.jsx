@@ -1,5 +1,5 @@
 import React from "react";
-import { FaArrowLeftLong } from "react-icons/fa6";
+import backButton from "./backButton";
 
 function ReviewForm({ formData }) {
   if (!formData) {
@@ -12,8 +12,8 @@ function ReviewForm({ formData }) {
 
   return (
     <div className="p-6 border border-gray-200 rounded-2xl bg-white shadow-md w-full max-w-md mx-auto">
-      <FaArrowLeftLong />
-
+      {/*Här har jag lagt till backButton komponenten*/}
+      <backButton />
       <h2 className="text-2xl font-semibold text-center mb-4 text-gray-800">
         Offert
       </h2>
