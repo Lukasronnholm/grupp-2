@@ -12,6 +12,7 @@ function ViewOffer() {
         <div>
             {offer ? (
                 <div>
+                    <h2>Offert</h2>
                     <p><strong>Företag:</strong> {offer.foretag}</p>
                     <p><strong>Tjänst:</strong> {offer.tjanst}</p>
                     <p><strong>Timmar:</strong> {offer.timmar}</p>
