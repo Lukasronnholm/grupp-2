@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function SendButton() {
-    const navigate = useNavigate()
-const [email, setEmail] = useState("")
+export default function SendButton({onSubmit}) {
+  const [email, setEmail] = useState("")
+   const navigate = useNavigate()
+
+
 
 function handleChange(event) {
 setEmail(event.target.value)
 }
-function handleSubmit(event){
+function handleEmailSubmit(event){
   event.preventDefault();
   if(email!=="") {
-    navigate("/reviewSent")
+
+    if(onSubmit){
+      onSubmit(event)
+    }
+        navigate("/ReviewSent")
+        console.log(onSubmit)
   }
 
 
@@ -22,7 +29,7 @@ return (
         Mejladress:
         <input type="text" name="mejladress" value={email} onChange={handleChange}></input>
     </label>
-    <button onClick={handleSubmit}>
+    <button onClick={handleEmailSubmit}>
         Skicka formulär
     </button>
     </>

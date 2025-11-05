@@ -1,25 +1,8 @@
 import { useState } from 'react';
 import SendButton from './sendButton';
 
-function OfferForm({ addOffer }) {
-  const[formData, setFormData] = useState({
-  foretag: "",
-  tjanst: "",
-  timmar: "",
-  pris: ""
-});
 
-function handleChange(event) {
-  const { name, value } = event.target;
-
-  setFormData((prevData) => ({
-    ...prevData,
-    [name]: value,
-  }));
-
-}
-
-
+function OfferForm({ addOffer}) {
 function handleSubmit(event){
   event.preventDefault();
    const newOffer = {
@@ -36,8 +19,25 @@ function handleSubmit(event){
     timmar: "",
     pris: ""
   });
- 
+
 }
+const[formData, setFormData] = useState({
+  foretag: "",
+  tjanst: "",
+  timmar: "",
+  pris: ""
+});
+
+function handleChange(event) {
+  const { name, value } = event.target;
+
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
+
+}
+
   return (<>
     <form >
       <label>
@@ -57,11 +57,10 @@ function handleSubmit(event){
         <input type="text" name="pris" value={formData.pris} onChange={handleChange}/>
       </label>
       <button type="submit" onClick={()=>{
-          navigate("/ReviewSent")
+
       }}>Förhandsgranskning</button>
-      <SendButton></SendButton>
+      <SendButton onSubmit={handleSubmit}></SendButton>
     </form>
-    <button type="submit">Förhandsgranskning</button>
     </>
   );
 }
