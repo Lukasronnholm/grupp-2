@@ -1,7 +1,5 @@
 import React from "react";
-import SendButton from "./sendButton";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import backButton from "./backButton";
 
 function ReviewForm({ formData }) {
   const navigate = useNavigate()
@@ -14,12 +12,9 @@ function ReviewForm({ formData }) {
   }
 
   return (
-    <>
-    <div><FaArrowLeftLong onClick={()=>{
-      navigate("/")
-    }} />
-</div>
-    <div className="p-6 border border-gray-300 rounded-2xl bg-white shadow-md w-full max-w-md mx-auto">
+    <div className="p-6 border border-gray-200 rounded-2xl bg-white shadow-md w-full max-w-md mx-auto">
+      {/*Här har jag lagt till backButton komponenten*/}
+      <backButton />
       <h2 className="text-2xl font-semibold text-center mb-4 text-gray-800">
         Offert
       </h2>
