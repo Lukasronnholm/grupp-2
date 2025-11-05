@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import SignButton from './signButton';
 function ViewOffer() {
     const [offer, setOffer] = useState(null);
     useEffect(() => {
@@ -11,6 +12,7 @@ function ViewOffer() {
         <div>
             {offer ? (
                 <div>
+                    <h2>Offert</h2>
                     <p><strong>Företag:</strong> {offer.foretag}</p>
                     <p><strong>Tjänst:</strong> {offer.tjanst}</p>
                     <p><strong>Timmar:</strong> {offer.timmar}</p>
@@ -20,6 +22,7 @@ function ViewOffer() {
             ) : (
                 <p>Ingen offert tillgänglig.</p>
             )}
+            <SignButton />
         </div>
     );
 }
