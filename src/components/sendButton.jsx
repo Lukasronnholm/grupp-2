@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-export default function SendButton() {
+export default function SendButton({onSubmit}) {
     const navigate = useNavigate()
 const [email, setEmail] = useState("")
 
@@ -10,7 +10,11 @@ setEmail(event.target.value)
 function handleSubmit(event){
   event.preventDefault();
   if(email!=="") {
+    if(onSubmit) {
+      onSubmit(event)
+    }
     navigate("/reviewSent")
+    console.log(email)
   }
 
 

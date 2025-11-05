@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import SendButton from './sendButton';
 import { useNavigate } from 'react-router-dom';
 function OfferForm({ addOffer }) {
   const navigate= useNavigate()
@@ -56,12 +57,12 @@ function handleSubmit(event){
         Pris:
         <input type="text" name="pris" value={formData.pris} onChange={handleChange}/>
       </label>
-      <button type="submit" onClick={()=>{
-          navigate("/ReviewSent")
+      <button type="button" onClick={() => {
+          // navigate to review page for preview (not sent yet)
+          navigate("/reviewSent", { state: { formData, btnClicked: true } });
       }}>Förhandsgranskning</button>
-      <SendButton></SendButton>
+      <SendButton handleSubmit={handleSubmit} formData={formData}></SendButton>
     </form>
-    <button type="submit" onClick={handleSubmit}>Förhandsgranskning</button>
     </>
   );
 }
