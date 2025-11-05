@@ -2,7 +2,7 @@ import OfferForm from "../components/offerForm";
 
 
 
-function Receiver() {
+function Sender({ addOffer }) {
   return (
     <div>
       <h1>Sender</h1>
@@ -11,4 +11,4 @@ function Receiver() {
   );
 }
 
-export default Receiver;
+export default Sender;
