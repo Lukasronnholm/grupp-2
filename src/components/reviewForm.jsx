@@ -2,6 +2,7 @@ import React from "react";
 import backButton from "./backButton";
 
 function ReviewForm({ formData }) {
+  const navigate = useNavigate()
   if (!formData) {
     return (
       <div className="p-4 border border-gray-300 rounded-xl bg-gray-50 text-gray-700">
@@ -37,8 +38,10 @@ function ReviewForm({ formData }) {
           <p className="font-semibold">Pris:</p>
           <p className="whitespace-pre-line">{formData.pris}</p>
         </div>
+        <SendButton></SendButton>
       </div>
     </div>
+    </>
   );
 }
 

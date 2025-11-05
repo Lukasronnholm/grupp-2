@@ -1,5 +1,24 @@
 import { useState } from 'react';
 import SendButton from './sendButton';
+import { useNavigate } from 'react-router-dom';
+function OfferForm({ addOffer }) {
+  const navigate= useNavigate()
+  const[formData, setFormData] = useState({
+  foretag: "",
+  tjanst: "",
+  timmar: "",
+  pris: ""
+});
+
+function handleChange(event) {
+  const { name, value } = event.target;
+
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: value,
+  }));
+
+}
 
 
 function OfferForm({ addOffer}) {
@@ -56,10 +75,11 @@ function handleChange(event) {
         Pris:
         <input type="text" name="pris" value={formData.pris} onChange={handleChange}/>
       </label>
-      <button type="submit" onClick={()=>{
-
+      <button type="button" onClick={() => {
+          // navigate to review page for preview (not sent yet)
+          navigate("/reviewSent", { state: { formData, btnClicked: true } });
       }}>Förhandsgranskning</button>
-      <SendButton onSubmit={handleSubmit}></SendButton>
+      <SendButton handleSubmit={handleSubmit} formData={formData}></SendButton>
     </form>
     </>
   );

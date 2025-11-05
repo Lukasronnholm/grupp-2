@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function SendButton({onSubmit}) {
-  const [email, setEmail] = useState("")
-   const navigate = useNavigate()
-
-
+    const navigate = useNavigate()
+const [email, setEmail] = useState("")
 
 function handleChange(event) {
 setEmail(event.target.value)
@@ -12,12 +10,11 @@ setEmail(event.target.value)
 function handleEmailSubmit(event){
   event.preventDefault();
   if(email!=="") {
-
-    if(onSubmit){
+    if(onSubmit) {
       onSubmit(event)
     }
-        navigate("/ReviewSent")
-        console.log(onSubmit)
+    navigate("/reviewSent")
+    console.log(email)
   }
 
 
