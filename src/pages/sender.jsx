@@ -32,12 +32,10 @@ function Sender({ addOffer }) {
     setFormData(newOffer)
     setView('review')
   }
- <Router>
+
       <Routes>
-        <Route path="/reviewSent" element={<ReviewSent/>} />
         <Route path="/reviewForm" element={<ReviewForm/>} />
       </Routes>
-    </Router>
   return (
     <div>
       <h1>Sender</h1>
