@@ -34,3 +34,4 @@ export function ReviewSent({formData, btnClicked}) {
         </>
     )
 }
+export default ReviewSent;

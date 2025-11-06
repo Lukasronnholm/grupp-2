@@ -20,6 +20,8 @@ function App() {
     prevOffers.map(offer => offer.id === id ? {...offer, isNew: false} : offer))
   }
 
+
+
   return (
     <Router>
       <Routes>

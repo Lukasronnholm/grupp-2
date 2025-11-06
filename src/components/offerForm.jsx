@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SendButton from "./sendButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 function OfferForm({ addOffer }) {
   const navigate = useNavigate();

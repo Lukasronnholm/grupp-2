@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Modal, Text, Title, Loader } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import bankidLogo from "../assets/bankid-logo.png"; // 👈 din logga
+import bankidLogo from "../assets/BankID_logo.png"; // 👈 din logga
 
 function BankIDModal({ opened, onClose }) {
   const navigate = useNavigate();
