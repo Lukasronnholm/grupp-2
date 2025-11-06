@@ -1,8 +1,6 @@
-import React from "react";
-import backButton from "./backButton";
+import BackButton from "./backButton";
 
 function ReviewForm({ formData }) {
-  const navigate = useNavigate();
   if (!formData) {
     return (
       <div className="p-4 border border-gray-300 rounded-xl bg-gray-50 text-gray-700">
@@ -15,7 +13,7 @@ function ReviewForm({ formData }) {
     <>
       <div className="p-6 border border-gray-200 rounded-2xl bg-white shadow-md w-full max-w-md mx-auto">
         {/*Här har jag lagt till backButton komponenten*/}
-        <backButton />
+        <BackButton />
         <h2 className="text-2xl font-semibold text-center mb-4 text-gray-800">
           Offert
         </h2>
