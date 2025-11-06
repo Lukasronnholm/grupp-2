@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ImageUpload from "./imageUpload";
 
 function OfferForm({ addOffer }) {
-  const navigate = useNavigate();
-  function handleSubmit(event) {
+  const navigate = useNavigate()
+ function handleSubmit(event) {
     event.preventDefault();
     const newOffer = {
       id: new Date(),
@@ -105,4 +105,5 @@ function OfferForm({ addOffer }) {
     </>
   );
 }
+
 export default OfferForm;
