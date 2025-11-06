@@ -9,3 +9,6 @@ function ActiveOffer({hasNew, onClick}) {
 export default ActiveOffer
 
 //onClick blir en prop som skickas in i komponenten och kan användas för att hantera klickhändelser på knappen. Sätts på föräldrakomponenten.
+//Ändra propen i receiver.jsx från hasNew till isNew=
+//I reciver.jsx, ta bort consten och navigera till viewOffer på onclick
+//Ändra const hasNewOffers i receiver.jsx. --> kod i chat gpt

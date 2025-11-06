@@ -1,15 +1,17 @@
 import ViewOffer from "../components/viewOffer"
 import ActiveOffer from "../components/activeOffer"
 import { useState } from "react"
+import { useNavigate } from "react-router";
 
 function Receiver({ offers, markAsRead }) {
-  const [hasNewOffers, setHasNewOffers] = useState(true);
+  const hasNewOffers = offers.some(offer => offer.isNew);
+  const navigate = useNavigate();
 
   return (
     <div>
       <h1>Receiver</h1>
       <ViewOffer offers={offers} markAsRead={markAsRead} />
-      <ActiveOffer hasNew={hasNewOffers} onClick={() => setHasNewOffers(false)}/>
+      <ActiveOffer hasNew={hasNewOffers} onClick={() => navigate("/newOffer")}/>
     </div>
   )
 }
