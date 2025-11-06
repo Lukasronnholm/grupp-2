@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SendButton from "./sendButton";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import ImageUpload from "./imageUpload";
 
 function OfferForm({ addOffer }) {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ function OfferForm({ addOffer }) {
       tjanst: "",
       timmar: "",
       pris: "",
+      image: null,
     });
   }
   const [formData, setFormData] = useState({
@@ -34,6 +36,14 @@ function OfferForm({ addOffer }) {
     setFormData(prevData => ({
       ...prevData,
       [name]: value,
+    }));
+  }
+  /*funktion för att hantera bild uppladdning*/ function handleImageSelect(
+    imageData
+  ) {
+    setFormData(prevData => ({
+      ...prevData,
+      image: imageData,
     }));
   }
 
@@ -75,12 +85,14 @@ function OfferForm({ addOffer }) {
             value={formData.pris}
             onChange={handleChange}
           />
+          {/* komponent för bild uppladdning */}
+          <ImageUpload onImageSelect={handleImageSelect} />
         </label>
         <button
           type="button"
           onClick={() => {
             // navigate to review page for preview (not sent yet)
-            navigate("/reviewSent", { state: { formData, btnClicked: true } });
+            navigate("/reviewForm", { state: { formData, btnClicked: true } });
           }}
         >
           Förhandsgranskning
