@@ -3,7 +3,7 @@ import SendButton from "./sendButton";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
-function ReviewForm({ formData }) {
+function ReviewForm({ formData, onSumbit }) {
   const navigate = useNavigate()
   if (!formData) {
     return (
@@ -43,7 +43,9 @@ function ReviewForm({ formData }) {
           <p className="font-semibold">Pris:</p>
           <p className="whitespace-pre-line">{formData.pris}</p>
         </div>
-        <SendButton></SendButton>
+        { onSumbit?
+        <SendButton></SendButton>: <h2>Mottagaren har aviserats!</h2>
+        }
       </div>
     </div>
     </>
