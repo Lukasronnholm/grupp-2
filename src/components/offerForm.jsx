@@ -10,18 +10,6 @@ function OfferForm({ addOffer }) {
   pris: ""
 });
 
-function handleChange(event) {
-  const { name, value } = event.target;
-
-  setFormData((prevData) => ({
-    ...prevData,
-    [name]: value,
-  }));
-
-}
-
-
-function OfferForm({ addOffer}) {
 function handleSubmit(event){
   event.preventDefault();
    const newOffer = {
@@ -40,13 +28,6 @@ function handleSubmit(event){
   });
 
 }
-const[formData, setFormData] = useState({
-  foretag: "",
-  tjanst: "",
-  timmar: "",
-  pris: ""
-});
-
 function handleChange(event) {
   const { name, value } = event.target;
 
