@@ -1,6 +1,6 @@
 import BackButton from "./backButton";
 
-function ReviewForm({ formData }) {
+function ReviewForm({ formData, onSumbit }) {
   if (!formData) {
     return (
       <div className="p-4 border border-gray-300 rounded-xl bg-gray-50 text-gray-700">
@@ -37,8 +37,14 @@ function ReviewForm({ formData }) {
             <p className="font-semibold">Pris:</p>
             <p className="whitespace-pre-line">{formData.pris}</p>
           </div>
-          <SendButton></SendButton>
         </div>
+        <div>
+          <p className="font-semibold">Pris:</p>
+          <p className="whitespace-pre-line">{formData.pris}</p>
+        </div>
+        { onSumbit?
+        <SendButton></SendButton>: <h2>Mottagaren har aviserats!</h2>
+        }
       </div>
     </>
   );
