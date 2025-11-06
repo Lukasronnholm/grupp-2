@@ -7,7 +7,7 @@ const [email, setEmail] = useState("")
 function handleChange(event) {
 setEmail(event.target.value)
 }
-function handleSubmit(event){
+function handleEmailSubmit(event){
   event.preventDefault();
   if(email!=="") {
     if(onSubmit) {
@@ -26,7 +26,7 @@ return (
         Mejladress:
         <input type="text" name="mejladress" value={email} onChange={handleChange}></input>
     </label>
-    <button onClick={handleSubmit}>
+    <button onClick={handleEmailSubmit}>
         Skicka formulär
     </button>
     </>
