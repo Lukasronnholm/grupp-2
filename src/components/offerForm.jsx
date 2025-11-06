@@ -3,8 +3,8 @@ import SendButton from "./sendButton";
 import { useNavigate } from "react-router-dom"
 
 function OfferForm({ addOffer }) {
-  const navigate = useNavigate();
-  function handleSubmit(event) {
+  const navigate = useNavigate()
+ function handleSubmit(event) {
     event.preventDefault();
     const newOffer = {
       id: new Date(),
@@ -93,4 +93,5 @@ function OfferForm({ addOffer }) {
     </>
   );
 }
+
 export default OfferForm;
