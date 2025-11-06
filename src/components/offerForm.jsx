@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import ImageUpload from "./imageUpload";
 
 function OfferForm({ addOffer }) {
-  const navigate = useNavigate()
- function handleSubmit(event) {
+  const navigate = useNavigate();
+  function handleSubmit(event) {
     event.preventDefault();
     const newOffer = {
       id: new Date(),
@@ -38,9 +38,8 @@ function OfferForm({ addOffer }) {
       [name]: value,
     }));
   }
-  /*funktion för att hantera bild uppladdning*/ function handleImageSelect(
-    imageData
-  ) {
+  /*funktion för att hantera bild uppladdning*/
+  function handleImageSelect(imageData) {
     setFormData(prevData => ({
       ...prevData,
       image: imageData,
