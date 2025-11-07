@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import OfferForm from "../components/offerForm";
 import ReviewForm from "../components/reviewForm"
-import { ReviewSent } from '../components/ReviewSent';
-import { Route,Router, Routes } from 'react-router-dom';
+
 
 function Sender({ addOffer }) {
   const [view, setView] = useState('form') // 'form' or 'review'
@@ -32,15 +31,11 @@ function Sender({ addOffer }) {
     setFormData(newOffer)
     setView('review')
   }
-
-      <Routes>
-        <Route path="/reviewForm" element={<ReviewForm/>} />
-      </Routes>
   return (
     <div>
       <h1>Sender</h1>
       {view === 'form' && (
-        <OfferForm onPreview={handlePreview} onSend={handleSend} />
+        <OfferForm onPreview={handlePreview} onSend={handleSend} initialData={formData}/>
       )}
       {view === 'review' && (
         <ReviewForm formData={formData} onBack={handleBack} onSend={handleSend} />
