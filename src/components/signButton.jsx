@@ -1,6 +1,6 @@
 import {FiEdit3} from 'react-icons/fi';
 import { useState } from 'react';
-import BankIDModal from './bankID';
+import BankID from './bankID';
 function SignButton() {
     const [showBankID, setShowBankID] = useState(false);
   return (
@@ -8,7 +8,10 @@ function SignButton() {
     <button onClick={() => setShowBankID(true)}  >
      Signera Offert <FiEdit3 /> 
     </button>
-    {showBankID && <BankIDModal />}
+    <BankID 
+      opened={showBankID} 
+      onClose={() => setShowBankID(false)} 
+    />
     </>
 )}
 export default SignButton;

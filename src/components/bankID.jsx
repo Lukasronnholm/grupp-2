@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Modal, Text, Title, Loader } from "@mantine/core";
+import { Loader } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import bankidLogo from "../assets/BankID_logo.png"; // 👈 din logga
+import bankidLogo from "../assets/BankID_logo.png";
 
-function BankIDModal({ opened, onClose }) {
+function BankID({ opened, onClose }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,37 +17,56 @@ function BankIDModal({ opened, onClose }) {
     return () => clearTimeout(timer);
   }, [opened, onClose, navigate]);
 
+  if (!opened) return null;
+
   return (
-    <Modal
-      opened={opened}
-      onClose={onClose}
-      title={<Title order={3}>BankID-signering</Title>}
-      centered
-      overlayProps={{ backgroundOpacity: 0.55, blur: 3 }}
-      radius="md"
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0,0,0,0.5)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 9999,
+      }}
     >
-      <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
-        {/* 🖼️ BankID-logga */}
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "40px",
+          borderRadius: "8px",
+          fontSize: "20px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
+
+        <p style={{ margin: "0 0 10px 0" }}>Signera via BankID</p>
         <img
           src={bankidLogo}
-          alt="BankID logotyp"
-          style={{
-            width: "140px",
-            marginBottom: "1.5rem",
-            filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.2))",
-          }}
+          alt="BankID Logo"
+          style={{ width: "150px", margin: "20px 0" }}
         />
-
-        <Loader color="blue" size="lg" />
-        <Text mt="md" c="dimmed">
-          Startar BankID på din enhet...
-        </Text>
-        <Text c="gray" size="sm">
-          Du kommer automatiskt vidare när signeringen är klar.
-        </Text>
+        <div style={{ margin: "20px 0" }}>
+          <Loader color="blue" size="lg" style={{ margin: "0 auto" }} />
+       
+        <div style={{ textAlign: "center" }}>
+       
+          <div style={{ color: "gray", fontSize: "16px" }}>
+            Signerar...
+          </div>
       </div>
-    </Modal>
-  );
+      </div>
+    </div>
+  </div>);
 }
 
-export default BankIDModal;
+export default BankID;
