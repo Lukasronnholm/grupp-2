@@ -1,19 +1,23 @@
 import { useState } from "react";
 import SendButton from "./sendButton";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import ImageUpload from "./imageUpload";
 
 function OfferForm({ addOffer, onPreview, initialData }) {
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState(initialData || {
-    foretag: "",
-    tjanst: "",
-    timmar: "",
-    pris: "",
-  });
-  
+  const [formData, setFormData] = useState(
+    initialData || {
+      foretag: "",
+      tjanst: "",
+      timmar: "",
+      pris: "",
+    }
+  );
+
   // Kontrollera om alla fält är ifyllda
-  const isFormValid = formData.foretag && formData.tjanst && formData.timmar && formData.pris;
+  const isFormValid =
+    formData.foretag && formData.tjanst && formData.timmar && formData.pris;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -30,13 +34,22 @@ function OfferForm({ addOffer, onPreview, initialData }) {
       tjanst: "",
       timmar: "",
       pris: "",
+      image: null,
     });
+  }
+
+  function handleImageChange(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const imageURL = URL.createObjectURL(file);
+      setFormData((prev) => ({ ...prev, image: imageURL }));
+    }
   }
 
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -45,8 +58,8 @@ function OfferForm({ addOffer, onPreview, initialData }) {
   return (
     <>
       <form>
-        
         <label style={{ display: "block", marginBottom: "15px" }}>
+          <ImageUpload />
           Företag:
           <input
             type="text"
@@ -60,13 +73,13 @@ function OfferForm({ addOffer, onPreview, initialData }) {
               padding: "8px",
               marginTop: "5px",
               border: "1px solid #ddd",
-              borderRadius: "4px"
+              borderRadius: "4px",
             }}
           />
         </label>
-        
+
         <label style={{ display: "block", marginBottom: "15px" }}>
-          Tjänst: 
+          Tjänst:
           <input
             type="text"
             name="tjanst"
@@ -79,13 +92,13 @@ function OfferForm({ addOffer, onPreview, initialData }) {
               padding: "8px",
               marginTop: "5px",
               border: "1px solid #ddd",
-              borderRadius: "4px"
+              borderRadius: "4px",
             }}
           />
         </label>
-        
+
         <label style={{ display: "block", marginBottom: "15px" }}>
-          Timmar: 
+          Timmar:
           <input
             type="number"
             name="timmar"
@@ -99,13 +112,13 @@ function OfferForm({ addOffer, onPreview, initialData }) {
               padding: "8px",
               marginTop: "5px",
               border: "1px solid #ddd",
-              borderRadius: "4px"
+              borderRadius: "4px",
             }}
           />
         </label>
-        
+
         <label style={{ display: "block", marginBottom: "15px" }}>
-          Pris: 
+          Pris:
           <input
             type="number"
             name="pris"
@@ -119,12 +132,11 @@ function OfferForm({ addOffer, onPreview, initialData }) {
               padding: "8px",
               marginTop: "5px",
               border: "1px solid #ddd",
-              borderRadius: "4px"
+              borderRadius: "4px",
             }}
           />
         </label>
-       
-        
+
         <button
           type="button"
           onClick={() => {
@@ -141,14 +153,14 @@ function OfferForm({ addOffer, onPreview, initialData }) {
             borderRadius: "4px",
             cursor: isFormValid ? "pointer" : "not-allowed",
             marginRight: "10px",
-            marginBottom: "10px"
+            marginBottom: "10px",
           }}
         >
           {isFormValid ? "Förhandsgranskning" : "Fyll i alla fält först"}
         </button>
-        
+
         {!isSubmitted ? (
-          <SendButton 
+          <SendButton
             isFormValid={isFormValid}
             onSubmit={(email) => {
               console.log("OfferForm: Skickar direkt med email:", email);
@@ -162,15 +174,17 @@ function OfferForm({ addOffer, onPreview, initialData }) {
               };
               if (addOffer) addOffer(newOffer);
               setIsSubmitted(true);
-            }} 
+            }}
           />
         ) : (
-          <h2 style={{ 
-            color: '#4CAF50', 
-            textAlign: 'center', 
-            marginTop: '20px',
-            padding: '15px'
-          }}>
+          <h2
+            style={{
+              color: "#4CAF50",
+              textAlign: "center",
+              marginTop: "20px",
+              padding: "15px",
+            }}
+          >
             Mottagaren har aviserats!
           </h2>
         )}
