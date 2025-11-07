@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function ReviewForm({ formData, onSubmit, onSend, onBack }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  
+
   const handleSubmit = () => {
     console.log("ReviewForm: handleSubmit anropad!");
     setIsSubmitted(true);
@@ -14,7 +14,7 @@ function ReviewForm({ formData, onSubmit, onSend, onBack }) {
         <p>Inget inskickat ännu...</p>
       </div>
     );
-  } 
+  }
 
   return (
     <>
@@ -24,6 +24,13 @@ function ReviewForm({ formData, onSubmit, onSend, onBack }) {
         </h2>
 
         <div className="space-y-3 text-gray-700">
+          {data.image && (
+            <img
+              src={data.image}
+              alt="Uploaded"
+              style={{ width: "200px", marginTop: "10px" }}
+            />
+          )}
           <div>
             <p className="font-semibold">Företag:</p>
             <p>{formData.foretag}</p>
@@ -43,10 +50,10 @@ function ReviewForm({ formData, onSubmit, onSend, onBack }) {
             <p className="whitespace-pre-line">{formData.pris}</p>
           </div>
         </div>
-        
+
         {!isSubmitted ? (
           <div>
-            <button 
+            <button
               onClick={onBack}
               style={{
                 padding: "10px 20px",
@@ -56,7 +63,7 @@ function ReviewForm({ formData, onSubmit, onSend, onBack }) {
                 borderRadius: "5px",
                 marginRight: "10px",
                 marginBottom: "10px",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
             >
               Ändra
@@ -64,12 +71,14 @@ function ReviewForm({ formData, onSubmit, onSend, onBack }) {
             <SendButton onSubmit={handleSubmit} />
           </div>
         ) : (
-          <h2 style={{ 
-            color: '#4CAF50', 
-            textAlign: 'center', 
-            marginTop: '20px',
-            padding: '15px'
-          }}>
+          <h2
+            style={{
+              color: "#4CAF50",
+              textAlign: "center",
+              marginTop: "20px",
+              padding: "15px",
+            }}
+          >
             Mottagaren har aviserats!
           </h2>
         )}
