@@ -5,6 +5,8 @@ import Receiver from './pages/receiver.jsx'
 import Sender from './pages/sender.jsx'
 import ViewOffer from './components/viewOffer.jsx'
 import ReviewForm from './components/reviewForm.jsx'
+import SignComplete from './components/signComplete.jsx'
+import { MantineProvider } from '@mantine/core'
 
 function App() {
  const [offers, setOffers] = useState(() => {
@@ -38,16 +40,18 @@ function App() {
 
 
   return (
+    <MantineProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Sender addOffer={addOffer}/>} />
         <Route path="/reviewform" element={<ReviewForm/>} />
          <Route path="/reviewoffer" element={<reviewOffer/>} />
         <Route path="/viewoffer" element={<ViewOffer offers={offers} markAsRead={markAsRead}/>} />
-        <Route path="/signcomplete" element={<signComplete />} />
+        <Route path="/signcompleted" element={<SignComplete />} />
         <Route path="/receiver" element={<Receiver offers={offers} markAsRead={markAsRead} />} />
       </Routes>
     </Router>
+    </MantineProvider>
   )
 }
 

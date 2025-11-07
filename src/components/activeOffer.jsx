@@ -6,10 +6,10 @@ function ActiveOffer({hasNew, onClick}) {
     {hasNew && (<span style={{
           position: 'absolute',
           top: '-4px',
-          right: '-4px',
+          right: '4px',
           height: '12px',
           width: '12px',
-          backgroundColor: '#ef4444', // red-500
+          backgroundColor: '#ef4444', 
           borderRadius: '50%',
           border: '1px solid black',
           zIndex: 10
