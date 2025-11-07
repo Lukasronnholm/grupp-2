@@ -10,8 +10,7 @@ function Receiver({ offers, markAsRead }) {
   return (
     <div>
       <h1>Receiver</h1>
-      <ViewOffer offers={offers} markAsRead={markAsRead} />
-      <ActiveOffer hasNew={hasNewOffers} onClick={() => navigate("/newOffer")}/>
+      <ActiveOffer hasNew={hasNewOffers} onClick={() => navigate("/viewoffer")}/>
     </div>
   )
 }

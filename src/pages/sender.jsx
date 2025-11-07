@@ -35,7 +35,7 @@ function Sender({ addOffer }) {
     <div>
       <h1>Sender</h1>
       {view === 'form' && (
-        <OfferForm onPreview={handlePreview} onSend={handleSend} initialData={formData}/>
+        <OfferForm addOffer={addOffer} onPreview={handlePreview} onSend={handleSend} initialData={formData}/>
       )}
       {view === 'review' && (
         <ReviewForm formData={formData} onBack={handleBack} onSend={handleSend} />

@@ -19,7 +19,6 @@ function App() {
   } catch (err) {
     console.error('Could not stringify offers', err);
     console.log('offers preview:', offers);
-    // hitta icke-serialiserbara fält
     offers.forEach((o, i) => {
       try { JSON.stringify(o) }
       catch(e) { console.error('Non-serializable offer at index', i, o); }
@@ -44,7 +43,7 @@ function App() {
         <Route path="/" element={<Sender addOffer={addOffer}/>} />
         <Route path="/reviewform" element={<ReviewForm/>} />
          <Route path="/reviewoffer" element={<reviewOffer/>} />
-        <Route path="/viewoffer" element={<ViewOffer/>} />
+        <Route path="/viewoffer" element={<ViewOffer offers={offers} markAsRead={markAsRead}/>} />
         <Route path="/signcomplete" element={<signComplete />} />
         <Route path="/receiver" element={<Receiver offers={offers} markAsRead={markAsRead} />} />
       </Routes>
