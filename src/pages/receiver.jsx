@@ -1,6 +1,6 @@
 import ViewOffer from "../components/viewOffer"
 import ActiveOffer from "../components/activeOffer"
-import { useState } from "react"
+//import { useState } from "react"
 import { useNavigate } from "react-router";
 
 function Receiver({ offers, markAsRead }) {
@@ -11,7 +11,7 @@ function Receiver({ offers, markAsRead }) {
     <div>
       <h1>Receiver</h1>
       <ViewOffer offers={offers} markAsRead={markAsRead} />
-      <ActiveOffer hasNew={hasNewOffers} onClick={() => navigate("/newOffer")}/>
+      <ActiveOffer hasNew={hasNewOffers} onClick={() => navigate("./viewOffer")}/>
     </div>
   )
 }
