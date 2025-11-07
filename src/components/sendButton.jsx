@@ -13,7 +13,7 @@ function handleEmailSubmit(event){
     if(onSubmit) {
       onSubmit(event)
     }
-    navigate("/reviewSent")
+    navigate("/reviewform")
     console.log(email)
   }
 

@@ -1,15 +1,31 @@
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import './App.css'
 import Receiver from './pages/receiver.jsx'
 import Sender from './pages/sender.jsx'
+import ViewOffer from './components/viewOffer.jsx'
+import ReviewForm from './components/reviewForm.jsx'
 
 function App() {
  const [offers, setOffers] = useState(() => {
-  try {return JSON.parse(localStorage.getItem('offers')) || []} 
+
+  try {return JSON.parse(localStorage.getItem('offers')) || []}
     catch (event) {return []}
  })
- useEffect(() => {localStorage.setItem('offers', JSON.stringify(offers))}, [offers])
+
+ useEffect(() => {
+  try {
+    localStorage.setItem('offers', JSON.stringify(offers));
+  } catch (err) {
+    console.error('Could not stringify offers', err);
+    console.log('offers preview:', offers);
+    // hitta icke-serialiserbara fält
+    offers.forEach((o, i) => {
+      try { JSON.stringify(o) }
+      catch(e) { console.error('Non-serializable offer at index', i, o); }
+    })
+  }
+}, [offers]);
 
  const addOffer = (newOffer) => {
   setOffers((prevOffers) => [newOffer, ...prevOffers])
@@ -26,6 +42,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Sender addOffer={addOffer}/>} />
+        <Route path="/reviewform" element={<ReviewForm/>} />
+         <Route path="/reviewoffer" element={<reviewOffer/>} />
+        <Route path="/viewoffer" element={<ViewOffer/>} />
+        <Route path="/signcomplete" element={<signComplete />} />
         <Route path="/receiver" element={<Receiver offers={offers} markAsRead={markAsRead} />} />
       </Routes>
     </Router>
