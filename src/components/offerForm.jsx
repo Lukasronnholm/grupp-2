@@ -34,16 +34,7 @@ function OfferForm({ addOffer, onPreview, initialData }) {
       tjanst: "",
       timmar: "",
       pris: "",
-      image: null,
     });
-  }
-
-  function handleImageChange(e) {
-    const file = e.target.files[0];
-    if (file) {
-      const imageURL = URL.createObjectURL(file);
-      setFormData((prev) => ({ ...prev, image: imageURL }));
-    }
   }
 
   function handleChange(event) {

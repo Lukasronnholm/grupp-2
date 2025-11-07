@@ -24,13 +24,6 @@ function ReviewForm({ formData, onSubmit, onSend, onBack }) {
         </h2>
 
         <div className="space-y-3 text-gray-700">
-          {data.image && (
-            <img
-              src={data.image}
-              alt="Uploaded"
-              style={{ width: "200px", marginTop: "10px" }}
-            />
-          )}
           <div>
             <p className="font-semibold">Företag:</p>
             <p>{formData.foretag}</p>
