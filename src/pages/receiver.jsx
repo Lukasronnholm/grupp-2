@@ -2,14 +2,15 @@ import ViewOffer from "../components/viewOffer"
 import ActiveOffer from "../components/activeOffer"
 import { useState } from "react"
 import { useNavigate } from "react-router";
+import fixitpro from "../assets/fixitpro.png"
 
 function Receiver({ offers, markAsRead }) {
   const hasNewOffers = offers.some(offer => offer.isNew);
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Receiver</h1>
+    <div style={{ flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
+      <img src={fixitpro} alt="FixItPro Logo" style={{ width: '150px', margin: '20px' }} />
       <ActiveOffer hasNew={hasNewOffers} onClick={() => navigate("/viewoffer")}/>
     </div>
   )

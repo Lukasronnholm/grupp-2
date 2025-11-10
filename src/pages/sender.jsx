@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import OfferForm from "../components/offerForm";
 import ReviewForm from "../components/reviewForm"
+import fixitpro from "../assets/fixitpro.png"
 
 
 function Sender({ addOffer }) {
@@ -32,8 +33,8 @@ function Sender({ addOffer }) {
     setView('review')
   }
   return (
-    <div>
-      <h1>Sender</h1>
+    <div style={{ flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
+      <img src={fixitpro} alt="FixItPro Logo" style={{ width: '150px', margin: '20px' }} />
       {view === 'form' && (
         <OfferForm addOffer={addOffer} onPreview={handlePreview} onSend={handleSend} initialData={formData}/>
       )}

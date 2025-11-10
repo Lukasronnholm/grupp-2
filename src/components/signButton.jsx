@@ -4,14 +4,28 @@ import BankID from './bankID';
 function SignButton() {
     const [showBankID, setShowBankID] = useState(false);
   return (
-    <>
-    <button onClick={() => setShowBankID(true)}  >
+    <div style={{textAlign: 'center', marginTop: '20px'}}>
+    <button onClick={() => setShowBankID(true)}      
+    style={{
+          width: '75%',
+          padding: "24px",
+          backgroundColor:"#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          fontSize: "18px",
+          fontWeight: "600",
+          marginTop: "10px",
+
+
+        }}>
      Signera Offert <FiEdit3 /> 
     </button>
     <BankID 
       opened={showBankID} 
       onClose={() => setShowBankID(false)} 
     />
-    </>
+    </div>
 )}
 export default SignButton;

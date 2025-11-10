@@ -19,12 +19,6 @@ function App() {
   try {
     localStorage.setItem('offers', JSON.stringify(offers));
   } catch (err) {
-    console.error('Could not stringify offers', err);
-    console.log('offers preview:', offers);
-    offers.forEach((o, i) => {
-      try { JSON.stringify(o) }
-      catch(e) { console.error('Non-serializable offer at index', i, o); }
-    })
   }
 }, [offers]);
 

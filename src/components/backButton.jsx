@@ -13,9 +13,15 @@ function BackButton({ color = "#333" }) {
         cursor: "pointer",
         display: "flex",
         alignItems: "center",
+        position: "fixed",
+        top: "10px",
+        left: "10px",
         gap: "8px",
-        color: color,
         fontSize: "1rem",
+        border: "1px solid " + '#007bff',
+        width: "fit-content",
+        margin: "10px",
+
       }}
     >
       <FaArrowLeft size={20} />

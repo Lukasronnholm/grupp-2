@@ -2,8 +2,6 @@ import { useState } from "react";
 
 export default function SendButton({ onSubmit, isFormValid = true }) {
   const [email, setEmail] = useState("");
-  
-  console.log("SendButton: onSubmit prop:", onSubmit);
 
   function handleChange(event) {
     setEmail(event.target.value)
@@ -11,67 +9,57 @@ export default function SendButton({ onSubmit, isFormValid = true }) {
   
   function handleEmailSubmit(event) {
     event.preventDefault();
-    console.log("Knappen trycktes! Email:", email);
     
     if (!isFormValid) {
-      console.log("ERROR: Formuläret är inte komplett!");
       return;
     }
     
-    if (email !== "") {
-      console.log("Email är ifylld, anropar onSubmit");
-      if (onSubmit) {
-        console.log("onSubmit finns, anropar den nu!");
-        onSubmit(email); // Skicka email till callback
-      } else {
-        console.log("ERROR: onSubmit finns inte!");
-      }
-    } else {
-      console.log("ERROR: Email är tom!");
+    if (email !== "" && onSubmit) {
+      onSubmit(email); // Skicka email till callback
     }
   }
 
   const canSubmit = isFormValid && email !== "";
 
   return (
-    <>
-      <label style={{ display: "block", marginBottom: "15px" }}>
-        Mejladress:
-        <input 
-          type="email" 
-          name="mejladress" 
-          value={email} 
-          onChange={handleChange}
-          placeholder="ange@email.se"
-          style={{
-            width: "100%",
-            padding: "8px",
-            marginTop: "5px",
-            border: email ? "2px solid #4CAF50" : "2px solid #ddd",
-            borderRadius: "4px"
-          }}
-        />
-      </label>
+    <div style={{ width: "100%", textAlign: "center" }}>
+      <input 
+        type="email" 
+        value={email} 
+        onChange={handleChange}
+        placeholder="Mottagarens email"
+        style={{
+          width: "100%",
+          padding: "24px",
+          marginTop: "5px",
+          border: "1px solid #ddd",
+          borderRadius: "4px",
+          marginTop: "60px",
+          fontSize: "18px",
+          outline: "none",
+          boxSizing: "border-box"
+        }}
+      />
       <button 
         onClick={handleEmailSubmit}
         disabled={!canSubmit}
         style={{
-          padding: "10px 20px",
-          backgroundColor: canSubmit ? "#28a745" : "#ccc",
-          color: "white",
+          width: '75%',
+          padding: "24px",
+          backgroundColor: canSubmit ? "#007bff" : "#e9ecef",
+          color: canSubmit ? "white" : "#6c757d",
           border: "none",
           borderRadius: "4px",
           cursor: canSubmit ? "pointer" : "not-allowed",
-          marginBottom: "10px"
+          fontSize: "18px",
+          fontWeight: "600",
+          marginTop: "10px",
+
+
         }}
       >
-        {!isFormValid 
-          ? "Fyll i formuläret först" 
-          : email === "" 
-            ? "Ange email först" 
-            : "Skicka formulär"
-        }
+        {email === "" ? "Ange email" : "Skicka offert"}
       </button>
-    </>
+    </div>
   )
 }

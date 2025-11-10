@@ -1,14 +1,26 @@
 function ActiveOffer({hasNew, onClick}) {
   return (
     <div style= {{position: 'relative', display: 'inline-block'}}>
-    <button onClick={onClick} >Aktiva offerter
+    <button onClick={onClick} style={{
+        
+          backgroundColor:"#007bff",
+          color: "white",
+          border: "none",
+          borderRadius: "4px",
+          cursor: "pointer",
+          fontSize: "18px",
+          fontWeight: "600",
+          marginTop: "10px",
+
+
+        }}>Aktiva offerter
     </button>
     {hasNew && (<span style={{
           position: 'absolute',
-          top: '-4px',
-          right: '4px',
-          height: '12px',
-          width: '12px',
+          top: '1px',
+          right: '-8px',
+          height: '18px',
+          width: '18px',
           backgroundColor: '#ef4444', 
           borderRadius: '50%',
           border: '1px solid black',

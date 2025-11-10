@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function ImageUpload({ onImageSelect }) {
-  const [preview, setPreview] = useState(null);
+function ImageUpload({ onImageSelect, initialImage }) {
+  const [preview, setPreview] = useState(initialImage || null);
+
+  useEffect(() => {
+    setPreview(initialImage || null);
+  }, [initialImage]);
 
   // Hantera när användaren väljer en bild
   function handleImageChange(event) {
@@ -24,12 +28,12 @@ function ImageUpload({ onImageSelect }) {
   }
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <label style={{ fontWeight: "bold" }}>Ladda upp en bild:</label>
+    <div>
+      <p style={{ fontWeight: "bold" }}>Ladda upp bild för tjänst eller vara:</p>
       <input type="file" accept="image/*" onChange={handleImageChange} />
 
       {preview && (
-        <div style={{ marginTop: "10px" }}>
+        <div style={{ marginTop: "20px", textAlign: "center" }}>
           <img
             src={preview}
             alt="Förhandsvisning"
@@ -45,12 +49,13 @@ function ImageUpload({ onImageSelect }) {
             <button
               onClick={handleRemoveImage}
               style={{
-                backgroundColor: "#F49899",
+                backgroundColor: "#007bffff",
                 color: "white",
                 border: "none",
                 borderRadius: "6px",
-                padding: "6px 12px",
-                marginTop: "8px",
+                padding: "24px",
+                width: "75%",
+                marginTop: "20px",
                 cursor: "pointer",
               }}
             >
