@@ -7,6 +7,7 @@ import ViewOffer from './components/viewOffer.jsx'
 import ViewOldOffers from './components/viewOldOffers.jsx'
 import ReviewForm from './components/reviewForm.jsx'
 import SignComplete from './components/signComplete.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 import { MantineProvider } from '@mantine/core'
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
   return (
     <MantineProvider>
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Sender addOffer={addOffer} setHasSignedButNotSent={setHasSignedButNotSent}/>} />
         <Route path="/reviewform" element={<ReviewForm/>} />

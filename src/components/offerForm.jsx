@@ -201,7 +201,6 @@ function OfferForm({ addOffer, onPreview, initialData, setHasSignedButNotSent })
             }}
             disabled={!isFormValid}
             style={{
-              padding: "10px 20px",
               backgroundColor: isFormValid ? "#007bffff" : "#d6d6d6ff",
               color: isFormValid ? "white" : "#5e5d5dff",
               border: "none",

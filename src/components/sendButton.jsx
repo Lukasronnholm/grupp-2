@@ -31,7 +31,6 @@ export default function SendButton({ onSubmit, isFormValid = true }) {
         style={{
           width: "100%",
           padding: "24px",
-          marginTop: "5px",
           border: "1px solid #ddd",
           borderRadius: "4px",
           marginTop: "60px",

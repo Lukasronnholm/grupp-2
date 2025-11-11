@@ -16,10 +16,12 @@ function Receiver({ offers, markAsRead, hasSignedButNotSent }) {
         markAsRead(newOffer.id);
       }
     }
+    window.scrollTo(0, 0);
     navigate("/viewoffer");
   }
 
   function handleOldOffersClick() {
+    window.scrollTo(0, 0);
     navigate("/viewoldoffers");
   }
   return (

@@ -9,7 +9,6 @@ function SignComplete() {
     <>
     <button style={{
         background: "none",
-        border: "none",
         cursor: "pointer",
         display: "flex",
         alignItems: "center",
@@ -17,11 +16,11 @@ function SignComplete() {
         overflow:'auto',
         top: "10px",
         fontSize: "1rem",
-        border: "1px solid " + '#007bff',
+        border: "1px solid #007bff",
         width: "fit-content",
         margin: "10px",
 
-      }} onClick={() => navigate('/receiver')}><FaArrowLeft size={20} /></button>
+      }} onClick={() => { window.scrollTo(0, 0); navigate('/receiver'); }}><FaArrowLeft size={20} /></button>
     <div style={{
                     maxWidth: "600px",
                     margin: "0 auto",

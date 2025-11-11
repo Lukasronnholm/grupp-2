@@ -13,12 +13,15 @@ function Sender({ addOffer, setHasSignedButNotSent }) {
   function handlePreview(data) {
     setFormData(data)
     setView('review')
+    window.scrollTo(0, 0);
   }
 
   function handleBack() {
     if (view === 'review') {
       setView('form') 
+      window.scrollTo(0, 0);
     } else {
+      window.scrollTo(0, 0);
       navigate('/receiver') 
     }
   }
