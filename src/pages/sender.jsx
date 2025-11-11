@@ -2,11 +2,13 @@ import { useState } from 'react'
 import OfferForm from "../components/offerForm";
 import ReviewForm from "../components/reviewForm"
 import fixitpro from "../assets/fixitpro.png"
+import { useNavigate } from 'react-router-dom';
 
 
-function Sender({ addOffer }) {
-  const [view, setView] = useState('form') // 'form' or 'review'
+function Sender({ addOffer, setHasSignedButNotSent }) {
+  const [view, setView] = useState('form') 
   const [formData, setFormData] = useState(null)
+  const navigate = useNavigate()
 
   function handlePreview(data) {
     setFormData(data)
@@ -14,10 +16,14 @@ function Sender({ addOffer }) {
   }
 
   function handleBack() {
-    setView('form')
+    if (view === 'review') {
+      setView('form') 
+    } else {
+      navigate('/receiver') 
+    }
   }
 
-  // when the user sends (from SendButton), create and store the offer and show review
+
   function handleSend(email) {
     if (!formData) return
     const newOffer = {
@@ -28,18 +34,18 @@ function Sender({ addOffer }) {
       sentTo: email,
     }
     if (addOffer) addOffer(newOffer)
-    // keep showing the review (you might want to clear the form or change view)
+    if (setHasSignedButNotSent) setHasSignedButNotSent(false) // Återställ status när ny offert skickas
     setFormData(newOffer)
     setView('review')
   }
   return (
     <div style={{ flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
-      <img src={fixitpro} alt="FixItPro Logo" style={{ width: '150px', margin: '20px' }} />
+      <img src={fixitpro} alt="FixItPro Logo" style={{ width: '150px', margin: '20px' }} onClick={handleBack} />
       {view === 'form' && (
-        <OfferForm addOffer={addOffer} onPreview={handlePreview} onSend={handleSend} initialData={formData}/>
+        <OfferForm addOffer={addOffer} onPreview={handlePreview} onSend={handleSend} initialData={formData} setHasSignedButNotSent={setHasSignedButNotSent}/>
       )}
       {view === 'review' && (
-        <ReviewForm formData={formData} onBack={handleBack} onSend={handleSend} />
+        <ReviewForm formData={formData} onBack={handleBack} onSend={handleSend} setHasSignedButNotSent={setHasSignedButNotSent} />
       )}
     </div>
   )

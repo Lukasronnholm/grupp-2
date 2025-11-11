@@ -1,12 +1,13 @@
 import SendButton from "./sendButton";
 import { useState } from "react";
-import BackButton from "./backButton";
-import { FaArrowLeft } from "react-icons/fa";
 
-function ReviewForm({ formData, onSubmit, onSend, onBack }) {
+
+function ReviewForm({ formData, onBack, onSend, setHasSignedButNotSent }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = (email) => {
+    if (onSend) onSend(email);
+    if (setHasSignedButNotSent) setHasSignedButNotSent(false); // Återställ status när offert skickas
     setIsSubmitted(true);
   };
   if (!formData) {

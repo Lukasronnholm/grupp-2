@@ -1,7 +1,7 @@
 import {FiEdit3} from 'react-icons/fi';
 import { useState } from 'react';
 import BankID from './bankID';
-function SignButton() {
+function SignButton({ offer, markAsSigned }) {
     const [showBankID, setShowBankID] = useState(false);
   return (
     <div style={{textAlign: 'center', marginTop: '20px'}}>
@@ -24,7 +24,9 @@ function SignButton() {
     </button>
     <BankID 
       opened={showBankID} 
-      onClose={() => setShowBankID(false)} 
+      onClose={() => setShowBankID(false)}
+      offer={offer}
+      markAsSigned={markAsSigned}
     />
     </div>
 )}

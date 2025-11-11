@@ -1,23 +1,28 @@
-function ActiveOffer({hasNew, onClick}) {
+function ActiveOffer({hasNew, onClick, hasSignedButNotSent = false}) {
+  const isDisabled = hasSignedButNotSent;
+
   return (
     <div style= {{position: 'relative', display: 'inline-block'}}>
-    <button onClick={onClick} style={{
-        
-          backgroundColor:"#007bff",
-          color: "white",
+    <button 
+      onClick={isDisabled ? undefined : onClick} 
+      disabled={isDisabled}
+      style={{
+          backgroundColor: isDisabled ? "#d6d6d6" : "#007bff",
+          color: isDisabled ? "#5e5d5d" : "white",
           border: "none",
           borderRadius: "4px",
-          cursor: "pointer",
+          cursor: isDisabled ? "not-allowed" : "pointer",
           fontSize: "18px",
           fontWeight: "600",
-          marginTop: "10px",
-
-
-        }}>Aktiva offerter
+          padding: "12px 24px",
+          opacity: isDisabled ? 0.6 : 1
+        }}
+    >
+      Nya offerter
     </button>
-    {hasNew && (<span style={{
+    {hasNew && !isDisabled && (<span style={{
           position: 'absolute',
-          top: '1px',
+          top: '-8px',
           right: '-8px',
           height: '18px',
           width: '18px',
@@ -27,12 +32,10 @@ function ActiveOffer({hasNew, onClick}) {
           zIndex: 10
         }}>
         </span>)}
+        
     </div>
   )
 }
  
 export default ActiveOffer;
-//onClick blir en prop som skickas in i komponenten och kan användas för att hantera klickhändelser på knappen. Sätts på föräldrakomponenten.
-//Ändra propen i receiver.jsx från hasNew till isNew=
-//I reciver.jsx, ta bort consten och navigera till viewOffer på onclick
-//Ändra const hasNewOffers i receiver.jsx. --> kod i chat gpt
+

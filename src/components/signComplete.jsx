@@ -1,15 +1,35 @@
-import BackButton from "./backButton";
+import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+
 
 function SignComplete() {
+  const navigate = useNavigate();
+
   return (
     <>
-    <BackButton />
+    <button style={{
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        position: "absolute",
+        overflow:'auto',
+        top: "10px",
+        fontSize: "1rem",
+        border: "1px solid " + '#007bff',
+        width: "fit-content",
+        margin: "10px",
+
+      }} onClick={() => navigate('/receiver')}><FaArrowLeft size={20} /></button>
     <div style={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center"
-    }}>
+                    maxWidth: "600px",
+                    margin: "0 auto",
+                    borderRadius: "12px",
+                    boxShadow: "0 2px 20px rgba(0,0,0,0.1)",
+                    overflow: "hidden",
+                    marginTop: "60px"
+                }}>
 
       
       <div style={{
@@ -22,7 +42,6 @@ function SignComplete() {
         margin: "0 20px"
       }}>
         
-        {/* Enkel checkmark */}
         <div style={{
           width: "80px",
           height: "80px",

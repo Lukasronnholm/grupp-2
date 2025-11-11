@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import SignButton from './signButton';
 import BackButton from './backButton';
 
-function ViewOffer({ offers, markAsRead }) {
+function ViewOffer({ offers, markAsRead, markAsSigned }) {
     const [offer, setOffer] = useState(null);
     
     useEffect(() => {
@@ -18,10 +18,11 @@ function ViewOffer({ offers, markAsRead }) {
     const currentDate = new Date().toLocaleDateString('sv-SE');
 
     return (
-        <div>
+        <div >
         <BackButton onClick={markAsRead} />
 
             {displayOffer ? (
+                <div >
                 <div style={{
                     maxWidth: "600px",
                     margin: "0 auto",
@@ -31,7 +32,6 @@ function ViewOffer({ offers, markAsRead }) {
                     overflow: "hidden",
                     marginTop: "60px"
                 }}>
-         {/* Header */}
          <div style={{
            backgroundColor: "#007bff",
            color: "white",
@@ -159,12 +159,14 @@ function ViewOffer({ offers, markAsRead }) {
            </div>
          </div>
         </div>
+        <SignButton offer={displayOffer} markAsSigned={markAsSigned} />
+        </div>
             ) : (
                 <div style={{ padding: "20px", textAlign: "center" }}>
                     <p>Ingen offert att visa</p>
                 </div>
             )}
-            <SignButton />
+           
         </div>
     );
 }

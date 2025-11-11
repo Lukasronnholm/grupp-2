@@ -3,13 +3,17 @@ import { Loader } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import bankidLogo from "../assets/BankID_logo.png";
 
-function BankID({ opened, onClose }) {
+function BankID({ opened, onClose, offer, markAsSigned }) {
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!opened) return;
 
     const timer = setTimeout(() => {
+      // Markera offerten som signerad om den finns och har ett id
+      if (offer && offer.id && markAsSigned) {
+        markAsSigned(offer.id);
+      }
       onClose();
       navigate("/signcompleted");
     }, 3000);

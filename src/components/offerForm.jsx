@@ -5,7 +5,7 @@ import ImageUpload from "./imageUpload";
 import { FaArrowLeft } from "react-icons/fa";
 
 
-function OfferForm({ addOffer, onPreview, initialData }) {
+function OfferForm({ addOffer, onPreview, initialData, setHasSignedButNotSent }) {
   const navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState(
@@ -18,7 +18,6 @@ function OfferForm({ addOffer, onPreview, initialData }) {
     }
   );
 
-  // Kontrollera om alla fält är ifyllda
   const isFormValid =
     formData.foretag && formData.tjanst && formData.timmar && formData.pris;
 
@@ -232,6 +231,7 @@ function OfferForm({ addOffer, onPreview, initialData }) {
                 sentTo: email,
               };
               if (addOffer) addOffer(newOffer);
+              if (setHasSignedButNotSent) setHasSignedButNotSent(false); // Återställ status när offert skickas
               setIsSubmitted(true);
               
           

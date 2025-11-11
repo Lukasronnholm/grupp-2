@@ -46,8 +46,8 @@ export default function SendButton({ onSubmit, isFormValid = true }) {
         style={{
           width: '75%',
           padding: "24px",
-          backgroundColor: canSubmit ? "#007bff" : "#e9ecef",
-          color: canSubmit ? "white" : "#6c757d",
+           backgroundColor: canSubmit ? "#007bffff" : "#d6d6d6ff",
+              color: canSubmit ? "white" : "#5e5d5dff",
           border: "none",
           borderRadius: "4px",
           cursor: canSubmit ? "pointer" : "not-allowed",
