@@ -15,7 +15,8 @@ export default function SendButton({ onSubmit, isFormValid = true }) {
     }
     
     if (email !== "" && onSubmit) {
-      onSubmit(email); // Skicka email till callback
+      window.scrollTo(0, 0); 
+      onSubmit(email); 
     }
   }
 

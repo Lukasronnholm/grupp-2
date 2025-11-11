@@ -26,6 +26,10 @@ function Sender({ addOffer, setHasSignedButNotSent }) {
     }
   }
 
+  function handleLogoClick() {
+    window.scrollTo(0, 0);
+    navigate('/receiver');
+  }
 
   function handleSend(email) {
     if (!formData) return
@@ -43,7 +47,15 @@ function Sender({ addOffer, setHasSignedButNotSent }) {
   }
   return (
     <div style={{ flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
-      <img src={fixitpro} alt="FixItPro Logo" style={{ width: '150px', margin: '20px' }} onClick={handleBack} />
+      <img 
+        src={fixitpro} 
+        alt="FixItPro Logo" 
+        style={{ 
+          width: '150px', 
+          margin: '20px',
+        }} 
+        onClick={handleLogoClick} 
+      />
       {view === 'form' && (
         <OfferForm addOffer={addOffer} onPreview={handlePreview} onSend={handleSend} initialData={formData} setHasSignedButNotSent={setHasSignedButNotSent}/>
       )}

@@ -24,6 +24,12 @@ function Receiver({ offers, markAsRead, hasSignedButNotSent }) {
     window.scrollTo(0, 0);
     navigate("/viewoldoffers");
   }
+
+  function handleLogoClick() {
+    window.scrollTo(0, 0);
+    navigate('/receiver');
+  }
+
   return (
     <div style={{ 
       flexDirection: 'column', 
@@ -32,7 +38,16 @@ function Receiver({ offers, markAsRead, hasSignedButNotSent }) {
       minHeight: '100vh',
       justifyContent: 'center'
     }}>
-      <img src={fixitpro} alt="FixItPro Logo" style={{ width: '150px', margin: '20px' }} />
+      <img 
+        src={fixitpro} 
+        alt="FixItPro Logo" 
+        style={{ 
+          width: '150px', 
+          margin: '20px',
+          cursor: 'pointer'
+        }} 
+        onClick={handleLogoClick}
+      />
       <ActiveOffer hasNew={hasNewOffers} markAsRead={markAsRead} onClick={handleActiveClick} hasSignedButNotSent={hasSignedButNotSent} />
       <OldOffers hasForm={hasForm} hasSigned={hasSignedOffers} onClick={handleOldOffersClick} />
     </div>
